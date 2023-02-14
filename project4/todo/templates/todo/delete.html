@@ -1,8 +1,22 @@
-<p>Do you want to delete "{{item}}"?</p>
+<head>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-size: 35px;
+    }
+  </style>
+</head>
+<body>
+  <p>Do you want to delete "{{item}}"?</p>
 
-<a href="{% url 'list' %}">Cancel</a>
-
-<form method="POST" action = "">
-    {% csrf_token %}
-    <input type = 'submit' name = "Confirm">
-</form>
+  <div>
+    <form style="height: 2.5%;"method="POST" action="">
+      {% csrf_token %}
+      <button style="border-color: red; border-width: 5px;">Delete</button>
+    </form>
+    <button style="border-color: rgb(78, 210, 78); border-width: 5px">
+      <a href="{% url 'list' %}">Cancel</a>
+    </button>
+  </div>
+</body>
