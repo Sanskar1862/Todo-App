@@ -1,9 +1,8 @@
-<h3>Update Form</h3>
+<body style="background-color: black;color: azure;">
+  <h1 style="color: blueviolet; text-align: center">Update Form</h1>
 
-<form method="POST" action="">
-    {% csrf_token %}
-
-
-    {{form}}
-    <input type = "submit" name = "Update Task">
-</form>
+  <form method="POST" action="">
+    {% csrf_token %} {{form}}
+    <input type="submit" name="Update Task" />
+  </form>
+</body>
