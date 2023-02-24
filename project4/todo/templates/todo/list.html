@@ -1,15 +1,21 @@
 <html>
   <head>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <style>
       body {
-        background-color: rgb(51,51,51);
-        color: white;
+        background-image: url('https://images.pexels.com/photos/1420709/pexels-photo-1420709.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        color: black;
+        background-size: cover;
       }
       .header {
+        width: 50%;
+        color:white;
+        background-color: rgba(0, 0, 0, 0.758);
         text-align: center;
         font-size: 65px;
         margin: auto;
         padding: auto;
+        border-radius: 10px;
       }
       form {
         align-items: center;
@@ -28,56 +34,125 @@
         height: 10%;
         width: 90%;
         margin: 10px;
-        font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode,
-          Lucida Sans, Tahoma, sans-serif;
-        color: orange;
+        font-family:"Gadugi", Times, serif;
+        color: white;
       }
-      body::-webkit-scrollbar{
-      display: none;
+      body::-webkit-scrollbar {
+        display: none;
       }
-      .main_body{
+      .main_body {
         backdrop-filter: blur(2px);
-        /* height: 50%; */
+        font-size: 25px;
         width: 40%;
-        background-color: rgb(68,68,68);
-        box-shadow: 0 0 40px rgba(8,7,16,0.6);
+        background-color: rgba(0, 0, 0, 0.751);
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
         margin: auto;
+        margin-bottom: 10px;
+        padding-top: 10px;
         border-style: solid;
         border-color: white;
         border-radius: 20px;
       }
-      .update1{
-        background-color: white;
+      .update1 {
+        background-color: rgb(47, 255, 61);
         border-radius: 4px;
-        border: 2px solid yellow;
-        font-weight: bold;
-        font-family: Goudy Old Style,Garamond,Big Caslon,Times New Roman,serif; 
+        font-size: 20px;
+        border: 2px solid white;
+        /* font-weight: bold; */
+        font-family:"Gadugi", Times, serif;
       }
-      .deleteB{
-        background-color: white;
-        font-weight: bold;
+      .deleteB {
+        background-color: red;
+        /* font-weight: bold; */
         border-radius: 4px;
-        border: 2px solid red;
-        font-family: Goudy Old Style,Garamond,Big Caslon,Times New Roman,serif; 
+        font-size: 20px;
+        border: 2px solid white;
+        font-family:"Gadugi", Times, serif;
       }
-      .submit{
-        background-color: white;
+      .submit {
+        color: white;
+        font-size: 15px;
+        background-color: black;
         border: 2px solid #f5f7f5;
         border-radius: 4px;
+      }
+      .site-footer {
+        color: white;
+        border-radius: 15px;
+        /* margin:auto; */
+        padding-top: 10px;
+        padding-left: 10px;
+        background-color: rgba(0, 0, 0);
+        font-size: 15px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        line-height: 20px;
+      }
+      a, a:visited, a:hover, a:active{
+        color: inherit;
+        text-decoration:none;
+      }
+      .text-justify,
+      .footer-links {
+        margin-left: 15px;
+      }
+      .site-footer hr {
+        border-top-color: #bbb;
+        opacity: 0.5;
+      }
+      .site-footer hr.small {
+        margin: 20px 0;
+      }
+      .site-footer h6 {
+        color: #fff;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-top: 5px;
+        letter-spacing: 2px;
+      }
+      .site-footer a {
+        color: #eeecec;
+      }
+      .site-footer a:hover {
+        color: #3366cc;
+        text-decoration: none;
+      }
+      .footer-links {
+        padding-left: 0;
+        list-style: none;
+      }
+      .footer-links li {
+        display: block;
+      }
+      .footer-links a {
+        color: white;
+      }
+      .footer-links a:active,
+      .footer-links a:focus,
+      .footer-links a:hover {
+        color: white;
+        text-decoration: none;
+      }
+      .footer-links.inline li {
+        display: inline-block;
+      }
+      .site-footer .social-icons {
+        text-align: right;
       }
     </style>
   </head>
   <body>
-    <div class="header">Tasks</div>
+    <header class="header">
+      Tasks
+    </header>
     <br />
     <br />
     <form method="POST" action="/">
       {% csrf_token %} {{form.title}}
-      <input class = "submit" type="submit" name="Create Task" />
+      <input class="submit" type="submit" name="Create Task" />
     </form>
-    <br>
+    <br />
     <div class="main_body">
-      <br>
       {% for task in tasks %}
       <div class="data">
         {% if task.complete == True %}
@@ -86,14 +161,45 @@
         <span>{{task}}</span>
         {% endif %}
       </div>
-      <br>
+      <br />
       <div class="updel">
-        <button class="update1"><a href="{% url 'update_task' task.id %}">Update</a></button>
-        <button class="deleteB"><a href="{% url 'delete' task.id %}">Delete</a></button>
+        <button class="update1">
+          <a href="{% url 'update_task' task.id %}">Update</a>
+        </button>
+        <button class="deleteB">
+          <a href="{% url 'delete' task.id %}">Delete</a>
+        </button>
       </div>
       <br />
-      <hr>
+      <hr />
       {% endfor %}
-    </div>
+    </div>  
   </body>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h3 class="a" style="text-decoration: underline solid;">About</h3>
+          <p class="text-justify">
+            My name is Kumar Sanskar and  as an IT student with a passion for web development, I have been honing my skills in Python and Django to create dynamic and responsive web applications. I have a deep understanding of Python's syntax and object-oriented programming principles, and I have been using Django as a framework to build web applications that are secure, scalable, and easy to maintain.
+          </p>
+        </div>
+        <br />
+
+        <div class="col-xs-6 col-md-3">
+          <h3 class="a" style="text-decoration: underline solid;">Quick Links</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="https://www.linkedin.com/in/kumar-sanskar-618009222/"
+                >LinkedIn</a
+              >
+            </li>
+            <li><a href="https://www.facebook.com/">Facebook</a></li>
+            <li><a href="https://github.com/Sanskar1862">Github</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+    </div>
+  </footer>
 </html>
